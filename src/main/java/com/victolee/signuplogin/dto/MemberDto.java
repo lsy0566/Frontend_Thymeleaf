@@ -3,15 +3,21 @@ package com.victolee.signuplogin.dto;
 import com.victolee.signuplogin.domain.entity.MemberEntity;
 import lombok.*;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 @ToString
 @NoArgsConstructor
 public class MemberDto {
     private Long id;
+
+    @Email(message = "이메일 형식에 맞지 않습니다.")
+    @NotBlank(message = "email은 필수 입력 값입니다.")
     private String email;
+
+    @NotBlank(message = "password는 필수 입력 값입니다.")
     private String password;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;

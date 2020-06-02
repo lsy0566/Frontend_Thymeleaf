@@ -21,7 +21,8 @@ public class MemberController {
     // 회원가입 페이지
     @GetMapping("/user/signup")
     public String dispSignup() {
-        return "/signup";
+//        return "/signup";
+        return "/userRegister";
     }
 
     // 회원가입 처리
@@ -35,7 +36,7 @@ public class MemberController {
     // 로그인 페이지
     @GetMapping("/user/login")
     public String dispLogin() {
-        return "/login";
+        return "/userLogin";
     }
 
     // 로그인 결과 페이지
@@ -73,5 +74,11 @@ public class MemberController {
     @GetMapping("/admin")
     public String dispAdmin() {
         return "/admin";
+    }
+
+    // 실험 페이지
+    @GetMapping("/mypage")
+    public String dispMypage(){
+     return "/mypage";
     }
 }

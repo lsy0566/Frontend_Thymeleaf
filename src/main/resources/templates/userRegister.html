@@ -1,9 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%@ page import="java.io.PrintWriter"%>
-
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>비식별 전문 식스센스</title>
     <meta charset="utf-8">
@@ -19,7 +15,7 @@ pageEncoding="UTF-8"%>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <a class="navbar-brand" href="index.jsp">비식별 전문 식스센스</a>
+    <a class="navbar-brand" href="/">비식별 전문 식스센스</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbar">
@@ -27,27 +23,32 @@ pageEncoding="UTF-8"%>
     </button>
 
     <div class="collapse navbar-collapse" id="navbar">
-
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.jsp">메인
-                </a>
+                <a class="nav-link" href="/">메인</a>
             </li>
 
-            <li class="nav-item dropdown"><a
-                    class="nav-link dropdown-toggle" id="dropdown"
-                    data-toggle="dropdown"> 회원 관리 </a>
-                <!-- 상단 드롭다운 -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown"> 회원 관리 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown">
-                    <a class="dropdown-item" href="userLogin.jsp">로그인</a> <a
-                        class="dropdown-item" href="userRegister.jsp">회원가입</a>
-                    <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+                    <a class="dropdown-item" th:href="@{/user/login}">로그인</a>
+                    <a class="dropdown-item" th:href="@{/user/signup}">회원가입</a>
+                    <a class="dropdown-item" th:href="@{/user/logout}" }>로그아웃</a>
                 </div>
             </li>
+
+            <!--            <li class="nav-item active">-->
+            <!--                <a sec:authorize="isAnonymous()" class="dropdown-item" th:href="@{/user/login}">로그인</a>-->
+            <!--            </li>-->
+            <!--            <li class="nav-item active">-->
+            <!--                <a sec:authorize="isAnonymous()" class="dropdown-item" th:href="@{/user/signup}">회원가입</a>-->
+            <!--            </li>-->
+            <!--            <li class="nav-item active">-->
+            <!--                <a sec:authorize="isAuthenticated()" class="dropdown-item" th:href="@{/user/logout}">로그아웃</a>-->
+            <!--            </li>-->
         </ul>
 
-        <form action="./index.jsp" method="get"
-              class="form-inline my-2 my-lg-0">
+        <form th:action="@{/}" method="get" class="form-inline my-2 my-lg-0">
             <input type="text" name="search" class="form-control mr-sm-2"
                    placeholder="내용을 입력하세요.">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
@@ -94,12 +95,11 @@ pageEncoding="UTF-8"%>
 <footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
     Copyright ⓒ 2020 이동욱 All Rights Reserved.
 </footer>
-
 <!-- 제이쿼리 자바스크립트 추가하기 -->
-<script src="@/js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <!-- Popper 자바스크립트 추가하기 -->
-<script src=@/js/popper.min.js></script>
+<script src="/js/popper.min.js"></script>
 <!-- 부트스트랩 자바스크립트 추가하기 -->
-<script src="@/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
